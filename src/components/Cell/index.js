@@ -3,8 +3,15 @@ import './index.css';
 
 class Cell extends Component {
   render() {
+    let className = "cell"
+    if(this.props.mario){
+      className = "cell mario"
+    }else if(this.props.sprite){
+      className = "cell sprite"
+    }
+
     return (
-      <div className={this.props.mario ? "cell mario" : "cell"} id={this.props.id} />
+      <div className={className} id={this.props.id} />
     );
   }
 }

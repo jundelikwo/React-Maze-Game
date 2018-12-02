@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Cell from '../Cell'
+import { shuffleArray } from '../../functions'
 import './index.css';
 
 class Board extends Component {
@@ -13,9 +14,18 @@ class Board extends Component {
     let ids = []
     for(var i=0; i < matrixSize; i++){
       let key = i+1
-      cells.push(<Cell key={key} id={'cell'+key} mario={key===mario} />)
-      ids.push(i)
+      cells.push(<Cell key={key} id={'cell'+key} mario={key===mario} sprite={false} />)
+      if(!(key===mario)){
+        ids.push(i)
+      }
     } 
+    const numberOfSprites = Math.round(Math.sqrt(matrixSize))
+    const spritePositions = shuffleArray(ids).slice(0,numberOfSprites)
+    spritePositions.forEach(pos => {
+      let key = pos+1
+      cells[pos] = <Cell key={key} id={'cell'+key} mario={key===mario} sprite={true} />
+    })
+    console.log('ids',ids,': spritePositions : ',spritePositions)
     this.state = { cells }
 
   }
