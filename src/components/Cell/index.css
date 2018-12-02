@@ -5,3 +5,8 @@ div.cell {
     float: left;
     border: 1px solid black;
 }
+
+div.cell.mario {
+    background: url(/mario-icon.png) no-repeat;
+    background-size: 100%;
+}

@@ -4,8 +4,7 @@ import './index.css';
 class Cell extends Component {
   render() {
     return (
-      <div className="cell">
-      </div>
+      <div className={this.props.mario ? "cell mario" : "cell"} id={this.props.id} />
     );
   }
 }

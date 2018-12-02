@@ -8,8 +8,8 @@ class App extends Component {
     super(props)
     let width = prompt("Please enter board width")
     let height = prompt("Please enter board height")
-    width = (!width || isNaN(width) || width == 0) ? 10 : width
-    height = (!height || isNaN(height) || height == 0) ? 10 : height
+    width = (!width || isNaN(width) || width == 0) ? 10 : parseInt(width,10)
+    height = (!height || isNaN(height) || height == 0) ? 10 : parseInt(height,10)
     this.state = { height, width }
   }
 
