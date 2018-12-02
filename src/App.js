@@ -63,6 +63,7 @@ class App extends Component {
   }
 
   onKeyPress = event => {
+    const { height } = this.state
     switch(event.keyCode){
       case 37 :
         // Left Arrow key pressed
@@ -71,7 +72,7 @@ class App extends Component {
         return
       case 38 :
         // Up Arrow key pressed
-        this.moveMario(-10)
+        this.moveMario(-height)
         event.preventDefault()
         return
       case 39 :
@@ -81,7 +82,7 @@ class App extends Component {
         return
       case 40 :
         // Down Arrow key pressed
-        this.moveMario(10)
+        this.moveMario(height)
         event.preventDefault()
         return
       default :
