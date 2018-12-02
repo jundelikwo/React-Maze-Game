@@ -7,28 +7,25 @@ import './index.css';
 class Board extends Component {
   constructor(props){
     super(props)
-    const { width, height } = this.props
-    let matrixSize = height*width
+    const { width, height, matrixSize } = this.props
     const mario = Math.round((height*width/2) - width/2)
     let cells = []
     let ids = []
     for(var i=0; i < matrixSize; i++){
-      let key = i+1
-      cells.push(<Cell key={key} id={'cell'+key} mario={key===mario} sprite={false} />)
-      if(!(key===mario)){
+      cells.push(<Cell key={i} id={i+1} mario={i===mario} sprite={false} />)
+      if(!(i===mario)){
         ids.push(i)
       }
     } 
     const numberOfSprites = Math.round(Math.sqrt(matrixSize))
     const spritePositions = shuffleArray(ids).slice(0,numberOfSprites)
     spritePositions.forEach(pos => {
-      let key = pos+1
-      cells[pos] = <Cell key={key} id={'cell'+key} mario={key===mario} sprite={true} />
+      cells[pos] = <Cell key={pos} id={pos+1} mario={pos===mario} sprite={true} />
     })
-    console.log('ids',ids,': spritePositions : ',spritePositions)
     this.state = { cells }
 
   }
+
   render() {
     const { width, height } = this.props
     return (
